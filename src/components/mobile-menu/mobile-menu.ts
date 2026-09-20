@@ -4,6 +4,7 @@ import { createElement } from '@/utils/dom';
 
 import '@/components/button/button.scss';
 import './mobile-menu.scss';
+import { assetUrl } from '@/utils/asset';
 
 const MENU_LINKS = ['Home', 'Library', 'Tournaments', 'Community'] as const;
 
@@ -64,7 +65,12 @@ export class MobileMenu {
       attributes: { type: 'button', 'aria-label': 'Close menu' },
       children: [
         createElement('img', {
-          attributes: { src: '/assets/icons/close.svg', alt: '', width: '20', height: '20' },
+          attributes: {
+            src: assetUrl('/assets/icons/close.svg'),
+            alt: '',
+            width: '20',
+            height: '20',
+          },
         }),
       ],
     });
@@ -78,7 +84,12 @@ export class MobileMenu {
       children: [
         createElement('img', {
           className: 'mobile-menu__logo',
-          attributes: { src: '/assets/icons/logo.svg', alt: '', width: '32', height: '32' },
+          attributes: {
+            src: assetUrl('/assets/icons/logo.svg'),
+            alt: '',
+            width: '32',
+            height: '32',
+          },
         }),
         createElement('span', { className: 'mobile-menu__brand-name', text: 'MiniGames' }),
       ],

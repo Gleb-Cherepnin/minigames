@@ -2,6 +2,7 @@ import { createElement } from '@/utils/dom';
 
 import '@/components/button/button.scss';
 import './developer-cta.scss';
+import { assetUrl } from '@/utils/asset';
 
 const TEXT =
   "Want to see your game on MiniGames? We're always looking for fun, engaging mini games to add to our platform. Submit your game and reach thousands of players!";
@@ -15,7 +16,7 @@ export class DeveloperCta {
         createElement('img', {
           className: 'developer-cta__illustration',
           attributes: {
-            src: '/assets/images/cta-illustration.jpg',
+            src: assetUrl('/assets/images/cta-illustration.jpg'),
             alt: 'Developer workplace with a computer and a game controller',
             loading: 'lazy',
           },
@@ -51,7 +52,12 @@ export class DeveloperCta {
       children: [
         createElement('img', {
           className: 'developer-cta__button-icon',
-          attributes: { src: '/assets/icons/upload.svg', alt: '', width: '24', height: '24' },
+          attributes: {
+            src: assetUrl('/assets/icons/upload.svg'),
+            alt: '',
+            width: '24',
+            height: '24',
+          },
         }),
         createElement('span', { text: 'Submit Form' }),
       ],

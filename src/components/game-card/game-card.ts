@@ -3,6 +3,7 @@ import { createElement } from '@/utils/dom';
 import { formatCount, formatRating } from '@/utils/format';
 
 import './game-card.scss';
+import { assetUrl } from '@/utils/asset';
 
 export class GameCard {
   constructor(private readonly game: Game) {}
@@ -13,7 +14,11 @@ export class GameCard {
       children: [
         createElement('img', {
           className: 'game-card__image',
-          attributes: { src: this.game.cardImage, alt: this.game.name, loading: 'lazy' },
+          attributes: {
+            src: assetUrl(this.game.cardImage),
+            alt: this.game.name,
+            loading: 'lazy',
+          },
         }),
         this.renderOverlay(),
       ],
@@ -27,8 +32,8 @@ export class GameCard {
     const meta = createElement('div', {
       className: 'game-card__meta',
       children: [
-        this.renderStat('/assets/icons/star.svg', rating, 'Rating'),
-        this.renderStat('/assets/icons/heart.svg', likes, 'Likes'),
+        this.renderStat(assetUrl('/assets/icons/star.svg'), rating, 'Rating'),
+        this.renderStat(assetUrl('/assets/icons/heart.svg'), likes, 'Likes'),
       ],
     });
 

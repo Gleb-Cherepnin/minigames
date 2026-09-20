@@ -2,6 +2,7 @@ import { createElement } from '@/utils/dom';
 
 import '@/components/button/button.scss';
 import './auth-dialog.scss';
+import { assetUrl } from '@/utils/asset';
 
 export enum AuthMode {
   Login = 'login',
@@ -245,7 +246,7 @@ export class AuthDialog {
     const wrapperChildren: (Node | string)[] = [
       createElement('img', {
         attributes: {
-          src: `/assets/icons/${config.icon}.svg`,
+          src: assetUrl(`/assets/icons/${config.icon}.svg`),
           alt: '',
           width: '20',
           height: '20',
@@ -280,7 +281,12 @@ export class AuthDialog {
       attributes: { type: 'button', 'aria-label': 'Show password' },
       children: [
         createElement('img', {
-          attributes: { src: '/assets/icons/visibility.svg', alt: '', width: '20', height: '20' },
+          attributes: {
+            src: assetUrl('/assets/icons/visibility.svg'),
+            alt: '',
+            width: '20',
+            height: '20',
+          },
         }),
       ],
     });
@@ -304,19 +310,24 @@ export class AuthDialog {
           attributes: { type: 'submit' },
         }),
         createElement('p', { className: 'auth-dialog__divider', text: 'or' }),
-        createElement('button', {
-          className: 'auth-dialog__google',
-          attributes: { type: 'button' },
-          children: [
-            createElement('img', {
-              attributes: { src: '/assets/icons/google.svg', alt: '', width: '24', height: '24' },
-            }),
-            createElement('span', {
-              text: isLogin ? 'Continue with Google' : 'Sign up with Google',
-            }),
-          ],
-        }),
+        this.buildGoogleButton(isLogin),
       ],
+    });
+  }
+
+  private buildGoogleButton(isLogin: boolean): HTMLElement {
+    const icon = createElement('img', {
+      attributes: { src: assetUrl('/assets/icons/google.svg'), alt: '', width: '24', height: '24' },
+    });
+
+    const label = createElement('span', {
+      text: isLogin ? 'Continue with Google' : 'Sign up with Google',
+    });
+
+    return createElement('button', {
+      className: 'auth-dialog__google',
+      attributes: { type: 'button' },
+      children: [icon, label],
     });
   }
 

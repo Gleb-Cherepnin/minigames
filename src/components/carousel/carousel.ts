@@ -1,5 +1,6 @@
 import { GameCard } from '@/components/game-card/game-card';
 import { getFeaturedGames } from '@/services/games-service';
+import { assetUrl } from '@/utils/asset';
 import { createElement } from '@/utils/dom';
 
 import './carousel.scss';
@@ -61,7 +62,7 @@ export class Carousel {
       children: [
         createElement('img', {
           attributes: {
-            src: `/assets/icons/arrow-${direction}.svg`,
+            src: assetUrl(`/assets/icons/arrow-${direction}.svg`),
             alt: '',
             width: '24',
             height: '24',

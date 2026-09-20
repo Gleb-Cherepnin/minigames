@@ -5,6 +5,7 @@ import { createElement } from '@/utils/dom';
 
 import '@/components/button/button.scss';
 import './header.scss';
+import { assetUrl } from '@/utils/asset';
 
 const NAV_LINKS = ['Home', 'Library', 'Tournaments', 'Community'] as const;
 
@@ -52,7 +53,12 @@ export class Header {
       children: [
         createElement('img', {
           className: 'header__logo',
-          attributes: { src: '/assets/icons/logo.svg', alt: '', width: '32', height: '32' },
+          attributes: {
+            src: assetUrl('/assets/icons/logo.svg'),
+            alt: '',
+            width: '32',
+            height: '32',
+          },
         }),
         createElement('span', { className: 'header__brand-name', text: 'MiniGames' }),
       ],
@@ -120,7 +126,12 @@ export class Header {
       attributes: { type: 'button', 'aria-label': 'Open menu', 'aria-expanded': 'false' },
       children: [
         createElement('img', {
-          attributes: { src: '/assets/icons/burger.svg', alt: '', width: '32', height: '32' },
+          attributes: {
+            src: assetUrl('/assets/icons/burger.svg'),
+            alt: '',
+            width: '32',
+            height: '32',
+          },
         }),
       ],
     });

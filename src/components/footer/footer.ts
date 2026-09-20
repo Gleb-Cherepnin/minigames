@@ -2,6 +2,7 @@ import { AppRoute } from '@/types/routes';
 import { createElement } from '@/utils/dom';
 
 import './footer.scss';
+import { assetUrl } from '@/utils/asset';
 
 const GITHUB_USER = 'Gleb-Cherepnin';
 const GITHUB_URL = `https://github.com/${GITHUB_USER}`;
@@ -44,7 +45,12 @@ export class Footer {
       children: [
         createElement('img', {
           className: 'footer__logo',
-          attributes: { src: '/assets/icons/logo.svg', alt: '', width: '32', height: '32' },
+          attributes: {
+            src: assetUrl('/assets/icons/logo.svg'),
+            alt: '',
+            width: '32',
+            height: '32',
+          },
         }),
         createElement('span', { className: 'footer__brand-name', text: 'MiniGames' }),
       ],
@@ -91,26 +97,24 @@ export class Footer {
   }
 
   private renderCommunity(): HTMLElement {
-    const socials = SOCIALS.map((social) =>
-      createElement('li', {
-        children: [
-          createElement('a', {
-            className: 'footer__social',
-            attributes: { href: AppRoute.Home, 'aria-label': social.label },
-            children: [
-              createElement('img', {
-                attributes: {
-                  src: `/assets/icons/${social.icon}.svg`,
-                  alt: '',
-                  width: '20',
-                  height: '20',
-                },
-              }),
-            ],
-          }),
-        ],
-      }),
-    );
+    const socials = SOCIALS.map((social) => {
+      const icon = createElement('img', {
+        attributes: {
+          src: assetUrl(`/assets/icons/${social.icon}.svg`),
+          alt: '',
+          width: '20',
+          height: '20',
+        },
+      });
+
+      const link = createElement('a', {
+        className: 'footer__social',
+        attributes: { href: AppRoute.Home, 'aria-label': social.label },
+        children: [icon],
+      });
+
+      return createElement('li', { children: [link] });
+    });
 
     return createElement('div', {
       className: 'footer__column',
@@ -156,21 +160,20 @@ export class Footer {
   }
 
   private renderGithubLink(): HTMLElement {
+    const icon = createElement('img', {
+      attributes: { src: assetUrl('/assets/icons/code.svg'), alt: '', width: '16', height: '16' },
+    });
+
+    const badge = createElement('span', {
+      className: 'footer__badge footer__badge--github',
+      attributes: { 'aria-hidden': 'true' },
+      children: [icon],
+    });
+
     return createElement('a', {
       className: 'footer__credit',
       attributes: { href: GITHUB_URL, target: '_blank', rel: 'noopener noreferrer' },
-      children: [
-        createElement('span', {
-          className: 'footer__badge footer__badge--github',
-          attributes: { 'aria-hidden': 'true' },
-          children: [
-            createElement('img', {
-              attributes: { src: '/assets/icons/code.svg', alt: '', width: '16', height: '16' },
-            }),
-          ],
-        }),
-        createElement('span', { text: `@${GITHUB_USER}` }),
-      ],
+      children: [badge, createElement('span', { text: `@${GITHUB_USER}` })],
     });
   }
 }

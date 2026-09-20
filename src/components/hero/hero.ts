@@ -2,6 +2,7 @@ import { createElement } from '@/utils/dom';
 
 import '@/components/button/button.scss';
 import './hero.scss';
+import { assetUrl } from '@/utils/asset';
 
 const TITLE = 'Take a Short Break & Have Fun';
 const TEXT_SHORT = 'Discover hundreds of curated casual mini-games right in your browser.';
@@ -16,7 +17,7 @@ export class Hero {
       children: [
         createElement('img', {
           className: 'hero__background',
-          attributes: { src: '/assets/images/hero.jpg', alt: '', 'aria-hidden': 'true' },
+          attributes: { src: assetUrl('/assets/images/hero.jpg'), alt: '', 'aria-hidden': 'true' },
         }),
         this.renderBox(),
       ],
