@@ -1,3 +1,4 @@
+import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
 import { AppRoute } from '@/types/routes';
 import { createElement } from '@/utils/dom';
 
@@ -7,11 +8,40 @@ import './header.scss';
 const NAV_LINKS = ['Home', 'Library', 'Tournaments', 'Community'] as const;
 
 export class Header {
+  private readonly burger: HTMLButtonElement;
+
+  private readonly menu: MobileMenu;
+
+  constructor() {
+    this.burger = this.buildBurger();
+    this.menu = new MobileMenu(() => {
+      this.setBurgerOpen(false);
+    });
+
+    this.burger.addEventListener('click', () => {
+      this.menu.open();
+      this.setBurgerOpen(true);
+    });
+  }
+
   public render(): HTMLElement {
     return createElement('header', {
       className: 'header',
       children: [this.renderBrand(), this.renderActions()],
     });
+  }
+
+  public renderMenu(): HTMLElement {
+    return this.menu.render();
+  }
+
+  public destroy(): void {
+    this.menu.destroy();
+  }
+
+  private setBurgerOpen(isOpen: boolean): void {
+    this.burger.classList.toggle('header__burger--open', isOpen);
+    this.burger.setAttribute('aria-expanded', String(isOpen));
   }
 
   private renderBrand(): HTMLElement {
@@ -31,7 +61,7 @@ export class Header {
   private renderActions(): HTMLElement {
     return createElement('div', {
       className: 'header__actions',
-      children: [this.renderNav(), this.renderButtons(), this.renderBurger()],
+      children: [this.renderNav(), this.renderButtons(), this.burger],
     });
   }
 
@@ -74,7 +104,7 @@ export class Header {
     });
   }
 
-  private renderBurger(): HTMLElement {
+  private buildBurger(): HTMLButtonElement {
     return createElement('button', {
       className: 'header__burger',
       attributes: { type: 'button', 'aria-label': 'Open menu', 'aria-expanded': 'false' },

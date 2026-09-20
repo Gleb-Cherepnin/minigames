@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: $size-2;
   padding: $size-2;
   border-bottom: 2px solid $color-on-primary;
   background-color: $color-bg;
@@ -13,12 +14,21 @@
   }
 
   @include above('tablet') {
+    padding: $size-3 $size-2;
+  }
+
+  @include from('laptop') {
+    padding: $size-3 $size-5;
+  }
+
+  @include from('wide') {
     padding: $size-3 $size-10;
   }
 }
 
 .header__brand {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: $size-1;
 }
@@ -32,18 +42,24 @@
   color: $color-on-primary;
   font-size: $font-size-headline-small;
   font-weight: $font-weight-bold;
+  white-space: nowrap;
 
-  @include above('tablet') {
+  @include from('laptop') {
     font-size: $font-size-headline-medium;
   }
 }
 
 .header__actions {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: $size-2;
 
-  @include above('tablet') {
+  @include from('laptop') {
+    gap: $size-3;
+  }
+
+  @include from('wide') {
     gap: $size-4;
   }
 }
@@ -58,7 +74,15 @@
 
 .header__nav-list {
   display: flex;
-  gap: $size-5;
+  gap: $size-2;
+
+  @include from('laptop') {
+    gap: $size-3;
+  }
+
+  @include from('wide') {
+    gap: $size-5;
+  }
 }
 
 .header__nav-link {
@@ -80,6 +104,7 @@
 
 .header__buttons {
   display: flex;
+  flex-shrink: 0;
   gap: $size-2;
 }
 
@@ -112,8 +137,16 @@
   padding: 0;
   border: none;
   background-color: transparent;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 
   @include above('tablet') {
     display: none;
   }
+}
+
+.header__burger--open {
+  transform: rotate(90deg);
+  opacity: 0;
 }
