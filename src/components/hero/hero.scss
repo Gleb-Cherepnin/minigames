@@ -108,8 +108,8 @@
 }
 
 .hero__button {
-  padding: $btn-small-y $btn-small-x;
-  font-size: $font-size-label-medium;
+  padding: 6px 14px;
+  font-size: 12px;
 
   @include from('tablet') {
     padding: 8px 17px;

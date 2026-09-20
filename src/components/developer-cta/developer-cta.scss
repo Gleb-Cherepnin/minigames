@@ -3,12 +3,12 @@
 .developer-cta {
   display: flex;
   flex-direction: column;
-  gap: $size-2;
+  gap: 12px;
   padding: $size-2;
 
   @include from('tablet') {
     gap: 24px;
-    padding: 20px 40px;
+    padding: 20px 40px 25px;
   }
 
   @include from('wide') {
@@ -53,7 +53,7 @@
 
   @include from('wide') {
     gap: $size-3;
-    height: auto;
+    height: 344px;
     padding: $size-5;
   }
 }
@@ -74,6 +74,7 @@
   font-size: $font-size-label-medium;
   font-weight: $font-weight-regular;
   line-height: 1.5;
+  white-space: pre-line;
 
   @include from('tablet') {
     width: 470px;
@@ -81,14 +82,14 @@
   }
 
   @include from('wide') {
-    max-width: 600px;
+    width: 600px;
     font-size: 18px;
   }
 }
 
 .developer-cta__button {
   gap: $size-1;
-  padding: $size-1 $size-2;
+  padding: 6px 15px;
   border-radius: $corner-medium;
   box-shadow: $shadow-button;
   font-family: $font-family-accent;

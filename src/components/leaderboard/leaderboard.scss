@@ -3,7 +3,7 @@
 .leaderboard {
   display: flex;
   flex-direction: column;
-  gap: $size-2;
+  gap: 12px;
   padding: $size-2;
 
   @include from('tablet') {
@@ -38,12 +38,8 @@
 
 .leaderboard__title {
   color: $color-on-primary;
-  font-size: $font-size-headline-small;
+  font-size: $font-size-headline-medium;
   font-weight: $font-weight-bold;
-
-  @include from('tablet') {
-    font-size: $font-size-headline-medium;
-  }
 
   @include from('wide') {
     font-size: $font-size-headline-large;
