@@ -1,5 +1,6 @@
 import type { Page } from '@/app/router';
 import { Header } from '@/components/header/header';
+import { Hero } from '@/components/hero/hero';
 import { createElement } from '@/utils/dom';
 
 import './home-page.scss';
@@ -12,7 +13,10 @@ export class HomePage implements Page {
       className: 'home-page',
       children: [
         this.header.render(),
-        createElement('main', { className: 'home-page__main' }),
+        createElement('main', {
+          className: 'home-page__main',
+          children: [new Hero().render()],
+        }),
         this.header.renderMenu(),
       ],
     });
