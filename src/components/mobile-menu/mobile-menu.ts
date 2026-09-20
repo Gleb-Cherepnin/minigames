@@ -74,7 +74,7 @@ export class MobileMenu {
       children: [
         createElement('img', {
           className: 'mobile-menu__logo',
-          attributes: { src: '/assets/icons/logo.png', alt: '', width: '32', height: '32' },
+          attributes: { src: '/assets/icons/logo.svg', alt: '', width: '32', height: '32' },
         }),
         createElement('span', { className: 'mobile-menu__brand-name', text: 'MiniGames' }),
       ],

@@ -51,7 +51,7 @@ export class Header {
       children: [
         createElement('img', {
           className: 'header__logo',
-          attributes: { src: '/assets/icons/logo.png', alt: '', width: '32', height: '32' },
+          attributes: { src: '/assets/icons/logo.svg', alt: '', width: '32', height: '32' },
         }),
         createElement('span', { className: 'header__brand-name', text: 'MiniGames' }),
       ],
