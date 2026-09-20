@@ -1,12 +1,15 @@
 @use '@/styles' as *;
 
+$header-max-height-wide: 85px;
+$header-button-inset: 2px;
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: $size-2;
   padding: $size-2;
-  border-bottom: 2px solid $color-on-primary;
+  border-bottom: $border-base solid $color-on-primary;
   background-color: $color-bg;
 
   @include from('tablet') {
@@ -22,7 +25,7 @@
   }
 
   @include from('wide') {
-    max-height: 85px;
+    max-height: $header-max-height-wide;
     padding: $size-3 $size-10;
   }
 }
@@ -91,7 +94,7 @@
   font-size: $font-size-title-xx-small;
   font-weight: $font-weight-medium;
   white-space: nowrap;
-  transition: color 0.2s ease;
+  transition: color $duration-fast $easing-base;
 
   &:hover {
     color: $color-on-primary;
@@ -111,7 +114,7 @@
 
 .header__login {
   display: none;
-  padding: $btn-medium-y - 2px $btn-medium-x - 2px;
+  padding: $btn-medium-y - $header-button-inset $btn-medium-x - $header-button-inset;
 
   @include above('tablet') {
     display: inline-flex;
@@ -127,7 +130,7 @@
   }
 
   @include above('tablet') {
-    padding: $btn-medium-y - 2px $btn-medium-x - 2px;
+    padding: $btn-medium-y - $header-button-inset $btn-medium-x - $header-button-inset;
   }
 }
 
@@ -139,8 +142,8 @@
   border: none;
   background-color: transparent;
   transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+    transform $duration-slow $easing-base,
+    opacity $duration-slow $easing-base;
 
   @include above('tablet') {
     display: none;
@@ -149,5 +152,5 @@
 
 .header__burger--open {
   transform: rotate(90deg);
-  opacity: 0;
+  opacity: $opacity-hidden;
 }

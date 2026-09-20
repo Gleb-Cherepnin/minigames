@@ -4,7 +4,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid $color-on-primary;
+  border: $border-base solid $color-on-primary;
   border-radius: $corner-small;
   background-color: transparent;
   color: $color-on-primary;
@@ -13,9 +13,9 @@
   font-weight: $font-weight-bold;
   white-space: nowrap;
   transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+    background-color $duration-fast $easing-base,
+    box-shadow $duration-fast $easing-base,
+    transform $duration-fast $easing-base;
 
   &:hover {
     background-color: $color-secondary;
@@ -27,7 +27,7 @@
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: $opacity-disabled;
     cursor: not-allowed;
     transform: none;
     background-color: transparent;

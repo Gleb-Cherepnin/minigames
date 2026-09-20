@@ -6,7 +6,7 @@
   min-width: 0;
   height: 100%;
   overflow: hidden;
-  border: 2.5px solid $color-on-primary;
+  border: $border-thick solid $color-on-primary;
   border-radius: $corner-large;
   background-color: $color-white;
   box-shadow: $shadow-level-1;
@@ -32,15 +32,10 @@
   flex-direction: column;
   gap: $size-1;
   padding: $size-2;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.4) 17.308%,
-    rgba(0, 0, 0, 0.85) 46.154%
-  );
+  background: $gradient-card-overlay;
 }
 
-@container game-card (min-width: 288px) {
+@container game-card (min-width: #{$game-card-overlay-min-width}) {
   .game-card__overlay {
     display: flex;
   }

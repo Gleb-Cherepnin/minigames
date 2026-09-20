@@ -1,53 +1,61 @@
 @use '@/styles' as *;
 
+$auth-dialog-width: 420px;
+$auth-dialog-offset: $size-3;
+$auth-dialog-scale-from: 0.96;
+$auth-dialog-panel-shift: $size-2;
+$auth-focus-ring-width: 3px;
+$auth-submit-height: 52px;
+$auth-google-height: 50px;
+
 .auth-dialog {
-  width: min(420px, calc(100% - #{$size-4}));
+  width: min($auth-dialog-width, calc(100% - #{$size-4}));
   max-height: calc(100% - #{$size-4});
   margin: auto;
   padding: $size-3;
-  border: 3px solid $color-on-primary;
+  border: $border-heavy solid $color-on-primary;
   border-radius: $corner-extra-large;
   background-color: $color-bg;
   box-shadow: $shadow-dialog;
   overflow-y: auto;
-  opacity: 0;
-  transform: translateY($size-3) scale(0.96);
+  opacity: $opacity-hidden;
+  transform: translateY($auth-dialog-offset) scale($auth-dialog-scale-from);
   transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    overlay 0.25s allow-discrete,
-    display 0.25s allow-discrete;
+    opacity $duration-base $easing-base,
+    transform $duration-base $easing-base,
+    overlay $duration-base allow-discrete,
+    display $duration-base allow-discrete;
 
   @include from('small-tablet') {
     padding: $size-4;
   }
 
   &::backdrop {
-    background-color: rgba($color-bg-footer, 0.6);
-    opacity: 0;
+    background-color: $color-backdrop;
+    opacity: $opacity-hidden;
     transition:
-      opacity 0.25s ease,
-      overlay 0.25s allow-discrete,
-      display 0.25s allow-discrete;
+      opacity $duration-base $easing-base,
+      overlay $duration-base allow-discrete,
+      display $duration-base allow-discrete;
   }
 
   &[open] {
-    opacity: 1;
+    opacity: $opacity-visible;
     transform: translateY(0) scale(1);
 
     &::backdrop {
-      opacity: 1;
+      opacity: $opacity-visible;
     }
   }
 }
 
 @starting-style {
   .auth-dialog[open] {
-    opacity: 0;
-    transform: translateY($size-3) scale(0.96);
+    opacity: $opacity-hidden;
+    transform: translateY($auth-dialog-offset) scale($auth-dialog-scale-from);
 
     &::backdrop {
-      opacity: 0;
+      opacity: $opacity-hidden;
     }
   }
 }
@@ -61,7 +69,7 @@
 .auth-dialog__tabs {
   display: flex;
   height: $size-6;
-  border: 2.5px solid $color-on-primary;
+  border: $border-thick solid $color-on-primary;
   border-radius: $corner-medium;
   background-color: $color-white;
 }
@@ -76,8 +84,8 @@
   font-size: $font-size-label-extra-large;
   font-weight: $font-weight-bold;
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
+    background-color $duration-base $easing-base,
+    color $duration-base $easing-base;
 }
 
 .auth-dialog__tab--active {
@@ -89,17 +97,17 @@
   display: flex;
   flex-direction: column;
   gap: $size-3;
-  animation: auth-panel-in 0.25s ease;
+  animation: auth-panel-in $duration-base $easing-base;
 }
 
 @keyframes auth-panel-in {
   from {
-    opacity: 0;
-    transform: translateX($size-2);
+    opacity: $opacity-hidden;
+    transform: translateX($auth-dialog-panel-shift);
   }
 
   to {
-    opacity: 1;
+    opacity: $opacity-visible;
     transform: translateX(0);
   }
 }
@@ -145,13 +153,13 @@
   gap: $size-2;
   height: $size-6;
   padding-inline: $size-2;
-  border: 2px solid $color-on-primary;
+  border: $border-base solid $color-on-primary;
   border-radius: $corner-small;
   background-color: $color-white;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow $duration-fast $easing-base;
 
   &:focus-within {
-    box-shadow: 0 0 0 3px $color-secondary;
+    box-shadow: 0 0 0 $auth-focus-ring-width $color-secondary;
   }
 }
 
@@ -172,11 +180,11 @@
   padding: 0;
   border: none;
   background-color: transparent;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  opacity: $opacity-icon;
+  transition: opacity $duration-fast $easing-base;
 
   &:hover {
-    opacity: 1;
+    opacity: $opacity-visible;
   }
 }
 
@@ -202,8 +210,8 @@
 }
 
 .auth-dialog__submit {
-  height: 52px;
-  border-width: 2.5px;
+  height: $auth-submit-height;
+  border-width: $border-thick;
   border-radius: $corner-medium;
   box-shadow: $shadow-cta;
   font-size: $font-size-label-extra-large;
@@ -227,7 +235,7 @@
   &::after {
     content: '';
     flex: 1 0 0;
-    height: 1px;
+    height: $border-hairline;
     background-color: $color-outline-variant;
   }
 }
@@ -237,14 +245,14 @@
   align-items: center;
   justify-content: center;
   gap: $size-2;
-  height: 50px;
-  border: 2px solid $color-on-primary;
+  height: $auth-google-height;
+  border: $border-base solid $color-on-primary;
   border-radius: $corner-medium;
   background-color: $color-white;
   color: $color-on-primary;
   font-size: $font-size-label-extra-large;
   font-weight: $font-weight-bold;
-  transition: background-color 0.2s ease;
+  transition: background-color $duration-fast $easing-base;
 
   &:hover {
     background-color: $color-secondary;

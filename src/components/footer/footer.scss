@@ -1,5 +1,13 @@
 @use '@/styles' as *;
 
+$footer-brand-gap-mobile: 22px;
+$footer-brand-width-wide: 400px;
+$footer-columns-gap-mobile: 38px;
+$footer-columns-row-gap-mobile: 22px;
+$footer-badge-size-mobile: 20px;
+$footer-badge-letter-spacing: -0.5px;
+$footer-designed-offset-wide: 17px;
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -33,14 +41,14 @@
 .footer__brand-block {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: $footer-brand-gap-mobile;
 
   @include from('tablet') {
     gap: $size-3;
   }
 
   @include from('wide') {
-    width: 400px;
+    width: $footer-brand-width-wide;
   }
 }
 
@@ -68,14 +76,14 @@
 .footer__about {
   color: $color-on-bg-footer;
   font-size: $font-size-body-small;
-  line-height: 1.5;
+  line-height: $line-height-relaxed;
 }
 
 .footer__columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 38px;
-  row-gap: 22px;
+  gap: $footer-columns-gap-mobile;
+  row-gap: $footer-columns-row-gap-mobile;
 
   @include from('tablet') {
     display: flex;
@@ -103,7 +111,7 @@
   display: block;
   color: $color-on-bg-footer;
   font-size: $font-size-body-small;
-  transition: color 0.2s ease;
+  transition: color $duration-fast $easing-base;
 
   &:hover {
     color: $color-white;
@@ -129,7 +137,7 @@
     width: $size-5;
     height: $size-5;
   }
-  transition: background-color 0.2s ease;
+  transition: background-color $duration-fast $easing-base;
 
   &:hover {
     background-color: $color-bg-footer-lowest;
@@ -137,7 +145,7 @@
 }
 
 .footer__divider {
-  height: 1px;
+  height: $border-hairline;
   border: none;
   margin: 0;
   background-color: $color-bg-footer-low;
@@ -194,7 +202,7 @@
   gap: $size-1;
   color: $color-on-bg-footer;
   font-size: $font-size-label-medium;
-  transition: color 0.2s ease;
+  transition: color $duration-fast $easing-base;
 
   @include from('tablet') {
     font-size: $font-size-body-small;
@@ -210,8 +218,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: $footer-badge-size-mobile;
+  height: $footer-badge-size-mobile;
   border-radius: $corner-medium;
   font-size: $font-size-label-small;
 
@@ -220,7 +228,7 @@
     height: $size-3;
   }
   font-weight: $font-weight-bold;
-  letter-spacing: -0.5px;
+  letter-spacing: $footer-badge-letter-spacing;
 }
 
 .footer__badge--rs {
@@ -242,6 +250,6 @@
   }
 
   @include from('wide') {
-    margin-left: 17px;
+    margin-left: $footer-designed-offset-wide;
   }
 }

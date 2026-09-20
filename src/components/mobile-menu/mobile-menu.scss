@@ -1,22 +1,25 @@
 @use '@/styles' as *;
 
+$mobile-menu-close-padding-x: 6px;
+$mobile-menu-button-max-width: 272px;
+
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  z-index: $layer-overlay;
   display: flex;
   flex-direction: column;
   gap: $size-4;
   padding: $size-3;
-  border-left: 2px solid $color-on-primary;
+  border-left: $border-base solid $color-on-primary;
   background-color: $color-bg-footer;
   transform: translateX(100%);
-  opacity: 0;
+  opacity: $opacity-hidden;
   visibility: hidden;
   transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+    transform $duration-slow $easing-base,
+    opacity $duration-slow $easing-base,
+    visibility $duration-slow $easing-base;
 
   @include above('tablet') {
     display: none;
@@ -25,7 +28,7 @@
 
 .mobile-menu--open {
   transform: translateX(0);
-  opacity: 1;
+  opacity: $opacity-visible;
   visibility: visible;
 }
 
@@ -58,11 +61,11 @@
   justify-content: center;
   width: $size-4;
   height: $size-4;
-  padding: $size-05 6px;
+  padding: $size-05 $mobile-menu-close-padding-x;
   border: none;
   border-radius: $corner-small;
   background-color: $color-bg-footer-low;
-  transition: background-color 0.2s ease;
+  transition: background-color $duration-fast $easing-base;
 
   &:hover {
     background-color: $color-bg-footer-lowest;
@@ -83,7 +86,7 @@
   color: $color-on-bg-footer;
   font-size: $font-size-title-xxx-small;
   font-weight: $font-weight-medium;
-  transition: color 0.2s ease;
+  transition: color $duration-fast $easing-base;
 
   &:hover {
     color: $color-primary;
@@ -104,7 +107,7 @@
 
 .mobile-menu__button {
   width: 100%;
-  max-width: 272px;
+  max-width: $mobile-menu-button-max-width;
   padding: $btn-medium-y $btn-medium-x;
   font-size: $font-size-body-small;
 }
