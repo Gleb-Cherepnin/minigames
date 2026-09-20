@@ -23,11 +23,7 @@ export class Footer {
   public render(): HTMLElement {
     return createElement('footer', {
       className: 'footer',
-      children: [
-        this.renderTop(),
-        createElement('hr', { className: 'footer__divider' }),
-        this.renderBottom(),
-      ],
+      children: [this.renderTop(), this.renderBottom()],
     });
   }
 
@@ -131,8 +127,8 @@ export class Footer {
       children: [this.renderRsLink(), this.renderGithubLink()],
     });
 
-    return createElement('div', {
-      className: 'footer__bottom',
+    const row = createElement('div', {
+      className: 'footer__bottom-row',
       children: [
         createElement('p', {
           className: 'footer__copyright',
@@ -141,6 +137,11 @@ export class Footer {
         meta,
         createElement('p', { className: 'footer__designed', text: 'Designed with love' }),
       ],
+    });
+
+    return createElement('div', {
+      className: 'footer__bottom',
+      children: [createElement('hr', { className: 'footer__divider' }), row],
     });
   }
 

@@ -4,16 +4,16 @@
   display: flex;
   flex-direction: column;
   gap: $size-2;
-  padding: $size-5 $size-2;
+  padding: $size-2;
 
   @include from('tablet') {
     gap: $size-3;
-    padding: $size-6 $size-5;
+    padding: $size-3 $size-5;
   }
 
   @include from('wide') {
-    gap: $size-4;
-    padding: $size-8 $size-15;
+    gap: $size-5;
+    padding: $size-5 $size-15;
   }
 }
 
@@ -72,8 +72,13 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: $size-6;
-  height: $size-6;
+  width: $size-5;
+  height: $size-5;
+
+  @include from('wide') {
+    width: $size-6;
+    height: $size-6;
+  }
   border: 2px solid $color-on-primary;
   border-radius: $corner-full;
   background-color: $color-white;
@@ -104,8 +109,9 @@
   }
 
   @include from('wide') {
-    gap: 12px;
-    height: 384px;
+    gap: 8px;
+    height: 386px;
+    padding: 0 8px;
   }
 }
 

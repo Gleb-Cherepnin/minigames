@@ -22,6 +22,7 @@
   }
 
   @include from('wide') {
+    max-height: 85px;
     padding: $size-3 $size-10;
   }
 }
@@ -110,7 +111,7 @@
 
 .header__login {
   display: none;
-  padding: $btn-medium-y $btn-medium-x;
+  padding: $btn-medium-y - 2px $btn-medium-x - 2px;
 
   @include above('tablet') {
     display: inline-flex;
@@ -126,7 +127,7 @@
   }
 
   @include above('tablet') {
-    padding: $btn-medium-y $btn-medium-x;
+    padding: $btn-medium-y - 2px $btn-medium-x - 2px;
   }
 }
 

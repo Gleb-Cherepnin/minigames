@@ -7,8 +7,8 @@
   padding: $size-2;
 
   @include from('tablet') {
-    gap: $size-3;
-    padding: $size-3 $size-5;
+    gap: 24px;
+    padding: 20px 40px;
   }
 
   @include from('wide') {
@@ -47,8 +47,13 @@
   background-color: $color-white;
   box-shadow: $shadow-card;
 
+  @include from('tablet') {
+    height: 253px;
+  }
+
   @include from('wide') {
     gap: $size-3;
+    height: auto;
     padding: $size-5;
   }
 }
@@ -71,11 +76,13 @@
   line-height: 1.5;
 
   @include from('tablet') {
-    font-size: $font-size-body-small;
+    width: 470px;
+    font-size: 14px;
   }
 
   @include from('wide') {
-    font-size: $font-size-body-large;
+    max-width: 600px;
+    font-size: 18px;
   }
 }
 
@@ -87,9 +94,13 @@
   font-family: $font-family-accent;
   font-size: $font-size-label-medium;
 
+  @include from('tablet') {
+    padding: 9px 30px;
+  }
+
   @include from('wide') {
-    padding: $btn-large-y $btn-large-x;
-    font-size: $font-size-body-large;
+    padding: 14px 24px;
+    font-size: 18px;
   }
 }
 

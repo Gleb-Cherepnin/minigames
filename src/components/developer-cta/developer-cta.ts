@@ -5,7 +5,7 @@ import './developer-cta.scss';
 import { assetUrl } from '@/utils/asset';
 
 const TEXT =
-  "Want to see your game on MiniGames? We're always looking for fun, engaging mini games to add to our platform. Submit your game and reach thousands of players!";
+  "Want to see your game on MiniGames? We're always looking for fun,\nengaging mini games to add to our platform. Submit your game\nand reach thousands of players!";
 
 export class DeveloperCta {
   public render(): HTMLElement {

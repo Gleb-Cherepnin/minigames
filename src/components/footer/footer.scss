@@ -8,12 +8,13 @@
   background-color: $color-bg-footer;
 
   @include from('tablet') {
+    gap: $size-5;
     padding: $size-5;
   }
 
   @include from('wide') {
-    gap: $size-6;
-    padding: $size-6 $size-15;
+    gap: $size-8;
+    padding: $size-5 $size-15;
   }
 }
 
@@ -87,6 +88,7 @@
 }
 
 .footer__link {
+  display: block;
   color: $color-on-bg-footer;
   font-size: $font-size-body-small;
   transition: color 0.2s ease;
@@ -125,6 +127,12 @@
 }
 
 .footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: $size-3;
+}
+
+.footer__bottom-row {
   display: flex;
   flex-direction: column;
   gap: $size-2;
@@ -193,5 +201,6 @@
 
   @include from('wide') {
     display: block;
+    margin-left: 17px;
   }
 }

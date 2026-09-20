@@ -56,10 +56,10 @@ export class Leaderboard {
       className: 'leaderboard__head-row',
       children: [
         this.renderTh('Rank', 'leaderboard__th leaderboard__col--rank'),
-        this.renderTh('Player', 'leaderboard__th'),
+        this.renderTh('Player', 'leaderboard__th leaderboard__col--player'),
         this.renderResponsiveTh('Games', 'Games Played', 'leaderboard__col--games'),
         this.renderResponsiveTh('Score', 'Total Score', ''),
-        this.renderTh('Streak', 'leaderboard__th'),
+        this.renderTh('Streak', 'leaderboard__th leaderboard__col--streak'),
         this.renderTh('Favorite Game', 'leaderboard__th leaderboard__col--favorite'),
       ],
     });
@@ -78,8 +78,8 @@ export class Leaderboard {
       className: `leaderboard__th ${extraClass}`.trim(),
       attributes: { scope: 'col' },
       children: [
-        createElement('span', { className: 'leaderboard__short', text: short }),
-        createElement('span', { className: 'leaderboard__long', text: long }),
+        createElement('span', { className: 'leaderboard__col-short', text: short }),
+        createElement('span', { className: 'leaderboard__col-long', text: long }),
       ],
     });
   }
@@ -128,7 +128,7 @@ export class Leaderboard {
     });
 
     return createElement('td', {
-      className: 'leaderboard__td leaderboard__td--player',
+      className: 'leaderboard__td leaderboard__td--player leaderboard__col--player',
       children: [inner],
     });
   }
@@ -148,7 +148,7 @@ export class Leaderboard {
 
   private renderStreakCell(days: number): HTMLElement {
     return createElement('td', {
-      className: 'leaderboard__td',
+      className: 'leaderboard__td leaderboard__col--streak',
       children: [
         createElement('span', { text: `🔥 ${String(days)}` }),
         createElement('span', { className: 'leaderboard__streak-unit-short', text: 'd' }),

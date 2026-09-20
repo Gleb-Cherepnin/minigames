@@ -52,7 +52,8 @@
   @include from('wide') {
     gap: $size-3;
     width: 640px;
-    padding: $size-6;
+    height: 402px;
+    padding: 45px;
     border-width: 3px;
     border-radius: $corner-extra-large;
     box-shadow: $shadow-level-3;
@@ -111,12 +112,12 @@
   font-size: $font-size-label-medium;
 
   @include from('tablet') {
-    padding: $btn-medium-y $btn-medium-x;
-    font-size: $font-size-body-small;
+    padding: 8px 17px;
+    font-size: 14px;
   }
 
   @include from('wide') {
-    padding: $btn-large-y $btn-large-x;
+    padding: 15px 22px;
     font-size: $font-size-body-large;
   }
 }
