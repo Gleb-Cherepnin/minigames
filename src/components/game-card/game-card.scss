@@ -1,7 +1,6 @@
 @use '@/styles' as *;
 
 .game-card {
-  container-type: inline-size;
   position: relative;
   flex: 1 1 auto;
   min-width: 0;
@@ -41,7 +40,7 @@
   );
 }
 
-@container (min-width: 288px) {
+@container game-card (min-width: 288px) {
   .game-card__overlay {
     display: flex;
   }

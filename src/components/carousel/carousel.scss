@@ -110,6 +110,7 @@
 }
 
 .carousel__item {
+  container: game-card / inline-size;
   display: flex;
   flex: 56 1 0;
   min-width: 0;
