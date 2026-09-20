@@ -1,0 +1,268 @@
+@use '@/styles' as *;
+
+$auth-dialog-width: 420px;
+$auth-dialog-offset: $size-3;
+$auth-dialog-scale-from: 0.96;
+$auth-dialog-panel-shift: $size-2;
+$auth-focus-ring-width: 3px;
+$auth-submit-height: 52px;
+$auth-google-height: 50px;
+
+.auth-dialog {
+  width: min($auth-dialog-width, calc(100% - #{$size-4}));
+  max-height: calc(100% - #{$size-4});
+  margin: auto;
+  padding: $size-3;
+  border: $border-heavy solid $color-on-primary;
+  border-radius: $corner-extra-large;
+  background-color: $color-bg;
+  box-shadow: $shadow-dialog;
+  overflow-y: auto;
+  opacity: $opacity-hidden;
+  transform: translateY($auth-dialog-offset) scale($auth-dialog-scale-from);
+  transition:
+    opacity $duration-base $easing-base,
+    transform $duration-base $easing-base,
+    overlay $duration-base allow-discrete,
+    display $duration-base allow-discrete;
+
+  @include from('small-tablet') {
+    padding: $size-4;
+  }
+
+  &::backdrop {
+    background-color: $color-backdrop;
+    opacity: $opacity-hidden;
+    transition:
+      opacity $duration-base $easing-base,
+      overlay $duration-base allow-discrete,
+      display $duration-base allow-discrete;
+  }
+
+  &[open] {
+    opacity: $opacity-visible;
+    transform: translateY(0) scale(1);
+
+    &::backdrop {
+      opacity: $opacity-visible;
+    }
+  }
+}
+
+@starting-style {
+  .auth-dialog[open] {
+    opacity: $opacity-hidden;
+    transform: translateY($auth-dialog-offset) scale($auth-dialog-scale-from);
+
+    &::backdrop {
+      opacity: $opacity-hidden;
+    }
+  }
+}
+
+.auth-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: $size-3;
+}
+
+.auth-dialog__tabs {
+  display: flex;
+  height: $size-6;
+  border: $border-thick solid $color-on-primary;
+  border-radius: $corner-medium;
+  background-color: $color-white;
+}
+
+.auth-dialog__tab {
+  flex: 1 0 0;
+  min-width: 0;
+  border: none;
+  border-radius: $corner-small;
+  background-color: transparent;
+  color: $color-on-bg;
+  font-size: $font-size-label-extra-large;
+  font-weight: $font-weight-bold;
+  transition:
+    background-color $duration-base $easing-base,
+    color $duration-base $easing-base;
+}
+
+.auth-dialog__tab--active {
+  background-color: $color-bg-footer-low;
+  color: $color-white;
+}
+
+.auth-dialog__panel {
+  display: flex;
+  flex-direction: column;
+  gap: $size-3;
+  animation: auth-panel-in $duration-base $easing-base;
+}
+
+@keyframes auth-panel-in {
+  from {
+    opacity: $opacity-hidden;
+    transform: translateX($auth-dialog-panel-shift);
+  }
+
+  to {
+    opacity: $opacity-visible;
+    transform: translateX(0);
+  }
+}
+
+.auth-dialog__heading {
+  display: flex;
+  flex-direction: column;
+  gap: $size-1;
+}
+
+.auth-dialog__title {
+  color: $color-on-primary;
+  font-size: $font-size-display-small;
+  font-weight: $font-weight-bold;
+}
+
+.auth-dialog__subtitle {
+  color: $color-on-bg;
+  font-size: $font-size-body-small;
+}
+
+.auth-dialog__fields {
+  display: flex;
+  flex-direction: column;
+  gap: $size-2;
+}
+
+.auth-dialog__field {
+  display: flex;
+  flex-direction: column;
+  gap: $size-1;
+}
+
+.auth-dialog__label {
+  color: $color-on-primary;
+  font-size: $font-size-label-large;
+  font-weight: $font-weight-bold;
+}
+
+.auth-dialog__input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: $size-2;
+  height: $size-6;
+  padding-inline: $size-2;
+  border: $border-base solid $color-on-primary;
+  border-radius: $corner-small;
+  background-color: $color-white;
+  transition: box-shadow $duration-fast $easing-base;
+
+  &:focus-within {
+    box-shadow: 0 0 0 $auth-focus-ring-width $color-secondary;
+  }
+}
+
+.auth-dialog__input {
+  flex: 1 0 0;
+  min-width: 0;
+  border: none;
+  background-color: transparent;
+  color: $color-on-bg;
+  font-size: $font-size-body-small;
+  font-weight: $font-weight-medium;
+  outline: none;
+}
+
+.auth-dialog__toggle {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  opacity: $opacity-icon;
+  transition: opacity $duration-fast $easing-base;
+
+  &:hover {
+    opacity: $opacity-visible;
+  }
+}
+
+.auth-dialog__forgot-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auth-dialog__link {
+  color: $color-on-primary;
+  font-size: $font-size-label-large;
+  font-weight: $font-weight-bold;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.auth-dialog__actions {
+  display: flex;
+  flex-direction: column;
+  gap: $size-2;
+}
+
+.auth-dialog__submit {
+  height: $auth-submit-height;
+  border-width: $border-thick;
+  border-radius: $corner-medium;
+  box-shadow: $shadow-cta;
+  font-size: $font-size-label-extra-large;
+
+  &:active {
+    transform: translateY($size-05);
+    box-shadow: none;
+  }
+}
+
+.auth-dialog__divider {
+  display: flex;
+  align-items: center;
+  gap: $size-2;
+  color: $color-on-bg;
+  font-size: $font-size-label-medium;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1 0 0;
+    height: $border-hairline;
+    background-color: $color-outline-variant;
+  }
+}
+
+.auth-dialog__google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $size-2;
+  height: $auth-google-height;
+  border: $border-base solid $color-on-primary;
+  border-radius: $corner-medium;
+  background-color: $color-white;
+  color: $color-on-primary;
+  font-size: $font-size-label-extra-large;
+  font-weight: $font-weight-bold;
+  transition: background-color $duration-fast $easing-base;
+
+  &:hover {
+    background-color: $color-secondary;
+  }
+}
+
+.auth-dialog__footer {
+  display: flex;
+  justify-content: center;
+  gap: $size-05;
+  color: $color-on-bg;
+  font-size: $font-size-body-small;
+}

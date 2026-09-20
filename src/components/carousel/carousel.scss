@@ -1,0 +1,159 @@
+@use '@/styles' as *;
+
+$carousel-padding-top-mobile: 12px;
+$carousel-padding-bottom-mobile: 20px;
+$carousel-track-gap-mobile: 6px;
+$carousel-track-height-mobile: 200px;
+$carousel-track-height-tablet: 280px;
+$carousel-track-height-wide: 386px;
+$carousel-item-grow-mobile: 56;
+$carousel-item-grow-tablet: 105;
+$carousel-item-grow-featured-mobile: 218;
+$carousel-item-grow-featured-tablet: 448;
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: $size-2;
+  padding: $carousel-padding-top-mobile $size-2 $carousel-padding-bottom-mobile;
+
+  @include from('tablet') {
+    gap: $size-3;
+    padding: $size-3 $size-5;
+  }
+
+  @include from('wide') {
+    gap: $size-5;
+    padding: $size-5 $size-15;
+  }
+}
+
+.carousel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $size-2;
+}
+
+.carousel__heading {
+  display: flex;
+  align-items: center;
+  gap: $size-1;
+}
+
+.carousel__accent {
+  flex-shrink: 0;
+  width: $size-1;
+  height: $size-3;
+  border: $border-thin solid $color-on-primary;
+  border-radius: $corner-extra-small;
+  background-color: $color-primary;
+
+  @include from('wide') {
+    height: $size-4;
+  }
+}
+
+.carousel__title {
+  color: $color-on-primary;
+  font-size: $font-size-headline-medium;
+  font-weight: $font-weight-bold;
+  white-space: nowrap;
+
+  @include from('wide') {
+    font-size: $font-size-headline-large;
+  }
+}
+
+.carousel__arrows {
+  display: none;
+  gap: $size-2;
+
+  @include from('tablet') {
+    display: flex;
+  }
+}
+
+.carousel__arrow {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: $size-5;
+  height: $size-5;
+
+  @include from('wide') {
+    width: $size-6;
+    height: $size-6;
+  }
+  border: $border-base solid $color-on-primary;
+  border-radius: $corner-full;
+  background-color: $color-white;
+  transition: background-color $duration-fast $easing-base;
+
+  &:hover {
+    background-color: $color-secondary;
+  }
+}
+
+.carousel__arrow--next {
+  background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary-low;
+  }
+}
+
+.carousel__track {
+  display: flex;
+  gap: $carousel-track-gap-mobile;
+  height: $carousel-track-height-mobile;
+  overflow: hidden;
+
+  @include from('tablet') {
+    gap: $size-1;
+    height: $carousel-track-height-tablet;
+  }
+
+  @include from('wide') {
+    gap: $size-1;
+    height: $carousel-track-height-wide;
+    padding: 0 $size-1;
+  }
+}
+
+.carousel__item {
+  container: game-card / inline-size;
+  display: flex;
+  flex: $carousel-item-grow-mobile 1 0;
+  min-width: 0;
+
+  @include from('tablet') {
+    flex-grow: $carousel-item-grow-tablet;
+  }
+
+  @include from('wide') {
+    flex: 0 0 $size-15;
+  }
+}
+
+.carousel__item--featured {
+  flex-grow: $carousel-item-grow-featured-mobile;
+
+  @include from('tablet') {
+    flex-grow: $carousel-item-grow-featured-tablet;
+  }
+
+  @include from('wide') {
+    flex: 1 1 0;
+  }
+}
+
+.carousel__item--side {
+  display: none;
+
+  @include from('wide') {
+    display: flex;
+    flex: 0 0 $game-card-overlay-min-width;
+  }
+}

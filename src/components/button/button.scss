@@ -1,0 +1,64 @@
+@use '@/styles' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: $border-base solid $color-on-primary;
+  border-radius: $corner-small;
+  background-color: transparent;
+  color: $color-on-primary;
+  font-family: $font-family-base;
+  font-size: $font-size-label-large;
+  font-weight: $font-weight-bold;
+  white-space: nowrap;
+  transition:
+    background-color $duration-fast $easing-base,
+    box-shadow $duration-fast $easing-base,
+    transform $duration-fast $easing-base;
+
+  &:hover {
+    background-color: $color-secondary;
+  }
+
+  &:active {
+    transform: translate($size-05, $size-05);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    opacity: $opacity-disabled;
+    cursor: not-allowed;
+    transform: none;
+    background-color: transparent;
+  }
+}
+
+.button--primary {
+  background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary-low;
+  }
+
+  &:active {
+    background-color: $color-primary-high;
+  }
+
+  &:disabled {
+    background-color: $color-primary;
+  }
+}
+
+.button--small {
+  padding: $btn-small-y $btn-small-x;
+}
+
+.button--medium {
+  padding: $btn-medium-y $btn-medium-x;
+}
+
+.button--large {
+  padding: $btn-large-y $btn-large-x;
+  font-size: $font-size-label-extra-large;
+}

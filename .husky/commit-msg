@@ -1,0 +1,6 @@
+if ! grep -qE '^(feat|fix|refactor|docs|style|test|perf|build|ci|chore|revert)(\(.+\))?: .+' "$1"; then
+  echo "Коммит отклонён: сообщение не соответствует конвенции RS School."
+  echo "Формат: <type>: <description>"
+  echo "Типы: feat, fix, refactor, docs, style, test, perf, build, ci, chore, revert"
+  exit 1
+fi

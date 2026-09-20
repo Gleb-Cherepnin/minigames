@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+$breakpoints: (
+  'mobile': 375px,
+  'small-tablet': 576px,
+  'tablet': 768px,
+  'laptop': 1024px,
+  'wide': 1440px,
+  'desktop': 1920px,
+);
+
+@function breakpoint($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error 'Неизвестный брейкпоинт: #{$name}. Доступные: #{map.keys($breakpoints)}.';
+  }
+
+  @return map.get($breakpoints, $name);
+}
+
+@mixin from($name) {
+  @media (min-width: breakpoint($name)) {
+    @content;
+  }
+}
+
+@mixin upto($name) {
+  @media (max-width: breakpoint($name)) {
+    @content;
+  }
+}
+
+@mixin above($name) {
+  @media (min-width: breakpoint($name) + 1px) {
+    @content;
+  }
+}

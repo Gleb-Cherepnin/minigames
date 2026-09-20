@@ -1,0 +1,156 @@
+@use '@/styles' as *;
+
+$header-max-height-wide: 85px;
+$header-button-inset: 2px;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $size-2;
+  padding: $size-2;
+  border-bottom: $border-base solid $color-on-primary;
+  background-color: $color-bg;
+
+  @include from('tablet') {
+    padding: $size-2 $size-5;
+  }
+
+  @include above('tablet') {
+    padding: $size-3 $size-2;
+  }
+
+  @include from('laptop') {
+    padding: $size-3 $size-5;
+  }
+
+  @include from('wide') {
+    max-height: $header-max-height-wide;
+    padding: $size-3 $size-10;
+  }
+}
+
+.header__brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: $size-1;
+}
+
+.header__logo {
+  width: $size-4;
+  height: $size-4;
+}
+
+.header__brand-name {
+  color: $color-on-primary;
+  font-size: $font-size-headline-small;
+  font-weight: $font-weight-bold;
+  white-space: nowrap;
+
+  @include from('laptop') {
+    font-size: $font-size-headline-medium;
+  }
+}
+
+.header__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: $size-2;
+
+  @include from('laptop') {
+    gap: $size-3;
+  }
+
+  @include from('wide') {
+    gap: $size-4;
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include above('tablet') {
+    display: block;
+  }
+}
+
+.header__nav-list {
+  display: flex;
+  gap: $size-2;
+
+  @include from('laptop') {
+    gap: $size-3;
+  }
+
+  @include from('wide') {
+    gap: $size-5;
+  }
+}
+
+.header__nav-link {
+  color: $color-on-bg;
+  font-size: $font-size-title-xx-small;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  transition: color $duration-fast $easing-base;
+
+  &:hover {
+    color: $color-on-primary;
+  }
+}
+
+.header__nav-link--active {
+  color: $color-on-primary;
+  font-weight: $font-weight-bold;
+}
+
+.header__buttons {
+  display: flex;
+  flex-shrink: 0;
+  gap: $size-2;
+}
+
+.header__login {
+  display: none;
+  padding: $btn-medium-y - $header-button-inset $btn-medium-x - $header-button-inset;
+
+  @include above('tablet') {
+    display: inline-flex;
+  }
+}
+
+.header__signup {
+  display: none;
+  padding: $btn-small-y $btn-small-x;
+
+  @include from('small-tablet') {
+    display: inline-flex;
+  }
+
+  @include above('tablet') {
+    padding: $btn-medium-y - $header-button-inset $btn-medium-x - $header-button-inset;
+  }
+}
+
+.header__burger {
+  display: flex;
+  width: $size-4;
+  height: $size-4;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition:
+    transform $duration-slow $easing-base,
+    opacity $duration-slow $easing-base;
+
+  @include above('tablet') {
+    display: none;
+  }
+}
+
+.header__burger--open {
+  transform: rotate(90deg);
+  opacity: $opacity-hidden;
+}

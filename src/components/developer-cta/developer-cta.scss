@@ -1,0 +1,142 @@
+@use '@/styles' as *;
+
+$cta-gap-mobile: 12px;
+$cta-padding-top-tablet: 20px;
+$cta-padding-bottom-tablet: 25px;
+$cta-illustration-height-mobile: 227px;
+$cta-illustration-height-tablet: 300px;
+$cta-illustration-width-wide: 682px;
+$cta-illustration-height-wide: 483px;
+$cta-card-height-tablet: 253px;
+$cta-card-height-wide: 344px;
+$cta-text-width-tablet: 470px;
+$cta-text-width-wide: 600px;
+$cta-button-padding-y-mobile: 6px;
+$cta-button-padding-x-mobile: 15px;
+$cta-button-padding-y-tablet: 9px;
+$cta-button-padding-x-tablet: 30px;
+$cta-button-padding-y-wide: 14px;
+
+.developer-cta {
+  display: flex;
+  flex-direction: column;
+  gap: $cta-gap-mobile;
+  padding: $size-2;
+
+  @include from('tablet') {
+    gap: $size-3;
+    padding: $cta-padding-top-tablet $size-5 $cta-padding-bottom-tablet;
+  }
+
+  @include from('wide') {
+    flex-direction: row;
+    align-items: center;
+    gap: $size-5;
+    padding: $size-5 $size-15;
+  }
+}
+
+.developer-cta__illustration {
+  width: 100%;
+  height: $cta-illustration-height-mobile;
+  border-radius: $corner-extra-large;
+  object-fit: cover;
+
+  @include from('tablet') {
+    height: $cta-illustration-height-tablet;
+  }
+
+  @include from('wide') {
+    flex: 0 0 $cta-illustration-width-wide;
+    height: $cta-illustration-height-wide;
+  }
+}
+
+.developer-cta__card {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $size-2;
+  padding: $size-3;
+  border: $border-base solid $color-on-primary;
+  border-radius: $corner-extra-large;
+  background-color: $color-white;
+  box-shadow: $shadow-card;
+
+  @include from('tablet') {
+    height: $cta-card-height-tablet;
+  }
+
+  @include from('wide') {
+    gap: $size-3;
+    height: $cta-card-height-wide;
+    padding: $size-5;
+  }
+}
+
+.developer-cta__title {
+  color: $color-on-primary;
+  font-size: $font-size-headline-medium;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+
+  @include from('wide') {
+    font-size: $font-size-headline-large;
+  }
+}
+
+.developer-cta__text {
+  color: $color-on-bg;
+  font-size: $font-size-label-medium;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  white-space: pre-line;
+
+  @include from('tablet') {
+    width: $cta-text-width-tablet;
+    font-size: $font-size-body-small;
+  }
+
+  @include from('wide') {
+    width: $cta-text-width-wide;
+    font-size: $font-size-body-large;
+  }
+}
+
+.developer-cta__button {
+  gap: $size-1;
+  padding: $cta-button-padding-y-mobile $cta-button-padding-x-mobile;
+  border-radius: $corner-medium;
+  box-shadow: $shadow-button;
+  font-family: $font-family-accent;
+  font-size: $font-size-label-medium;
+
+  @include from('tablet') {
+    padding: $cta-button-padding-y-tablet $cta-button-padding-x-tablet;
+  }
+
+  @include from('wide') {
+    padding: $cta-button-padding-y-wide $size-3;
+    font-size: $font-size-body-large;
+  }
+}
+
+.developer-cta__button-icon {
+  width: $size-2;
+  height: $size-2;
+
+  @include from('wide') {
+    width: $size-3;
+    height: $size-3;
+  }
+}
+
+.developer-cta__contact {
+  color: $color-on-bg-low;
+  font-size: $font-size-label-medium;
+
+  @include from('wide') {
+    font-size: $font-size-body-small;
+  }
+}
