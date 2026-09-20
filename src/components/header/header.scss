@@ -1,0 +1,119 @@
+@use '@/styles' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $size-2;
+  border-bottom: 2px solid $color-on-primary;
+  background-color: $color-bg;
+
+  @include from('tablet') {
+    padding: $size-2 $size-5;
+  }
+
+  @include above('tablet') {
+    padding: $size-3 $size-10;
+  }
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: $size-1;
+}
+
+.header__logo {
+  width: $size-4;
+  height: $size-4;
+}
+
+.header__brand-name {
+  color: $color-on-primary;
+  font-size: $font-size-headline-small;
+  font-weight: $font-weight-bold;
+
+  @include above('tablet') {
+    font-size: $font-size-headline-medium;
+  }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: $size-2;
+
+  @include above('tablet') {
+    gap: $size-4;
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include above('tablet') {
+    display: block;
+  }
+}
+
+.header__nav-list {
+  display: flex;
+  gap: $size-5;
+}
+
+.header__nav-link {
+  color: $color-on-bg;
+  font-size: $font-size-title-xx-small;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-on-primary;
+  }
+}
+
+.header__nav-link--active {
+  color: $color-on-primary;
+  font-weight: $font-weight-bold;
+}
+
+.header__buttons {
+  display: flex;
+  gap: $size-2;
+}
+
+.header__login {
+  display: none;
+  padding: $btn-medium-y $btn-medium-x;
+
+  @include above('tablet') {
+    display: inline-flex;
+  }
+}
+
+.header__signup {
+  display: none;
+  padding: $btn-small-y $btn-small-x;
+
+  @include from('small-tablet') {
+    display: inline-flex;
+  }
+
+  @include above('tablet') {
+    padding: $btn-medium-y $btn-medium-x;
+  }
+}
+
+.header__burger {
+  display: flex;
+  width: $size-4;
+  height: $size-4;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  @include above('tablet') {
+    display: none;
+  }
+}

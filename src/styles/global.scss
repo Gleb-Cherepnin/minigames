@@ -10,6 +10,11 @@ body {
   margin: 0;
   min-width: $layout-min-width;
   overflow-x: hidden;
+  font-family: $font-family-base;
+  font-size: $font-size-body-medium;
+  font-weight: $font-weight-regular;
+  color: $color-on-bg;
+  background-color: $color-bg;
 }
 
 h1,
