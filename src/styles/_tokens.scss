@@ -55,6 +55,7 @@ $font-size-label-small: 10px;
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;
+$font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 
@@ -93,6 +94,11 @@ $btn-icon: 8px;
 $shadow-level-1: 4px 4px 0 $color-on-primary;
 $shadow-level-2: 6px 6px 0 $color-on-primary;
 $shadow-level-3: 8px 8px 0 $color-on-primary;
+
+$shadow-card:
+  0 2px 4px rgba(0, 0, 0, 0.04),
+  0 14px 15px rgba(0, 0, 0, 0.08);
+$shadow-button: 0 10px 10px rgba(0, 0, 0, 0.1);
 
 $layout-max-width: 1920px;
 $layout-min-width: 375px;

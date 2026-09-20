@@ -119,7 +119,7 @@
   }
 
   @include from('wide') {
-    flex-grow: 5;
+    flex: 0 0 $size-15;
   }
 }
 
@@ -131,7 +131,7 @@
   }
 
   @include from('wide') {
-    flex-grow: 34;
+    flex: 1 1 0;
   }
 }
 
@@ -140,6 +140,6 @@
 
   @include from('wide') {
     display: flex;
-    flex-grow: 12;
+    flex: 0 0 288px;
   }
 }
