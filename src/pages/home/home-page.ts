@@ -1,6 +1,7 @@
 import type { Page } from '@/app/router';
 import { Carousel } from '@/components/carousel/carousel';
 import { DeveloperCta } from '@/components/developer-cta/developer-cta';
+import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header/header';
 import { Hero } from '@/components/hero/hero';
 import { Leaderboard } from '@/components/leaderboard/leaderboard';
@@ -25,6 +26,7 @@ export class HomePage implements Page {
             new DeveloperCta().render(),
           ],
         }),
+        new Footer().render(),
         this.header.renderMenu(),
       ],
     });

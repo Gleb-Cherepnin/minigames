@@ -1,0 +1,197 @@
+@use '@/styles' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: $size-3;
+  padding: $size-4 $size-2;
+  background-color: $color-bg-footer;
+
+  @include from('tablet') {
+    padding: $size-5;
+  }
+
+  @include from('wide') {
+    gap: $size-6;
+    padding: $size-6 $size-15;
+  }
+}
+
+.footer__top {
+  display: flex;
+  flex-direction: column;
+  gap: $size-3;
+
+  @include from('wide') {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.footer__brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: $size-2;
+
+  @include from('wide') {
+    gap: $size-3;
+    width: 400px;
+  }
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: $size-1;
+}
+
+.footer__logo {
+  width: $size-4;
+  height: $size-4;
+}
+
+.footer__brand-name {
+  color: $color-white;
+  font-size: $font-size-headline-medium;
+  font-weight: $font-weight-bold;
+}
+
+.footer__about {
+  color: $color-on-bg-footer;
+  font-size: $font-size-body-small;
+  line-height: 1.5;
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $size-3;
+
+  @include from('wide') {
+    display: flex;
+    gap: $size-10;
+  }
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: $size-2;
+}
+
+.footer__column-title {
+  color: $color-white;
+  font-size: $font-size-title-xx-small;
+  font-weight: $font-weight-bold;
+}
+
+.footer__link {
+  color: $color-on-bg-footer;
+  font-size: $font-size-body-small;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.footer__socials {
+  display: flex;
+  gap: $size-2;
+}
+
+.footer__social {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: $size-5;
+  height: $size-5;
+  border-radius: $corner-full;
+  background-color: $color-bg-footer-low;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-bg-footer-lowest;
+  }
+}
+
+.footer__divider {
+  height: 1px;
+  border: none;
+  margin: 0;
+  background-color: $color-bg-footer-low;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: $size-2;
+
+  @include from('wide') {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer__copyright {
+  color: $color-on-bg-footer;
+  font-size: $font-size-body-small;
+}
+
+.footer__meta {
+  display: flex;
+  align-items: center;
+  gap: $size-3;
+
+  @include from('wide') {
+    display: contents;
+  }
+}
+
+.footer__credit {
+  display: flex;
+  align-items: center;
+  gap: $size-1;
+  color: $color-on-bg-footer;
+  font-size: $font-size-body-small;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.footer__badge {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: $size-3;
+  height: $size-3;
+  border-radius: $corner-medium;
+  font-size: $font-size-label-small;
+  font-weight: $font-weight-bold;
+  letter-spacing: -0.5px;
+}
+
+.footer__badge--rs {
+  background-color: $color-on-primary;
+  color: $color-primary;
+}
+
+.footer__badge--github {
+  background-color: $color-white;
+}
+
+.footer__designed {
+  display: none;
+  color: $color-on-bg-footer;
+  font-size: $font-size-body-small;
+
+  @include from('wide') {
+    display: block;
+  }
+}
