@@ -1,3 +1,4 @@
+import { AuthMode } from '@/components/auth-dialog/auth-dialog';
 import { MobileMenu } from '@/components/mobile-menu/mobile-menu';
 import { AppRoute } from '@/types/routes';
 import { createElement } from '@/utils/dom';
@@ -12,11 +13,11 @@ export class Header {
 
   private readonly menu: MobileMenu;
 
-  constructor() {
+  constructor(private readonly onAuthRequest: (mode: AuthMode) => void) {
     this.burger = this.buildBurger();
     this.menu = new MobileMenu(() => {
       this.setBurgerOpen(false);
-    });
+    }, onAuthRequest);
 
     this.burger.addEventListener('click', () => {
       this.menu.open();
@@ -87,20 +88,29 @@ export class Header {
   }
 
   private renderButtons(): HTMLElement {
+    const login = createElement('button', {
+      className: 'button header__login',
+      text: 'Log In',
+      attributes: { type: 'button' },
+    });
+
+    const signup = createElement('button', {
+      className: 'button button--primary header__signup',
+      text: 'Sign Up',
+      attributes: { type: 'button' },
+    });
+
+    login.addEventListener('click', () => {
+      this.onAuthRequest(AuthMode.Login);
+    });
+
+    signup.addEventListener('click', () => {
+      this.onAuthRequest(AuthMode.Register);
+    });
+
     return createElement('div', {
       className: 'header__buttons',
-      children: [
-        createElement('button', {
-          className: 'button header__login',
-          text: 'Log In',
-          attributes: { type: 'button' },
-        }),
-        createElement('button', {
-          className: 'button button--primary header__signup',
-          text: 'Sign Up',
-          attributes: { type: 'button' },
-        }),
-      ],
+      children: [login, signup],
     });
   }
 

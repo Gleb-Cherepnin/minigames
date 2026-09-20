@@ -1,3 +1,4 @@
+import { AuthMode } from '@/components/auth-dialog/auth-dialog';
 import { AppRoute } from '@/types/routes';
 import { createElement } from '@/utils/dom';
 
@@ -11,7 +12,10 @@ export class MobileMenu {
 
   private isOpen = false;
 
-  constructor(private readonly onClose: () => void) {
+  constructor(
+    private readonly onClose: () => void,
+    private readonly onAuthRequest: (mode: AuthMode) => void,
+  ) {
     this.element = this.build();
     document.addEventListener('keydown', this.handleKeydown);
   }
@@ -124,11 +128,15 @@ export class MobileMenu {
       attributes: { type: 'button' },
     });
 
-    for (const button of [login, signup]) {
-      button.addEventListener('click', () => {
-        this.close();
-      });
-    }
+    login.addEventListener('click', () => {
+      this.close();
+      this.onAuthRequest(AuthMode.Login);
+    });
+
+    signup.addEventListener('click', () => {
+      this.close();
+      this.onAuthRequest(AuthMode.Register);
+    });
 
     return createElement('div', {
       className: 'mobile-menu__actions',

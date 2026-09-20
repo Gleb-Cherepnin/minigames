@@ -1,4 +1,5 @@
 import type { Page } from '@/app/router';
+import { AuthDialog, type AuthMode } from '@/components/auth-dialog/auth-dialog';
 import { Carousel } from '@/components/carousel/carousel';
 import { DeveloperCta } from '@/components/developer-cta/developer-cta';
 import { Footer } from '@/components/footer/footer';
@@ -10,7 +11,11 @@ import { createElement } from '@/utils/dom';
 import './home-page.scss';
 
 export class HomePage implements Page {
-  private readonly header = new Header();
+  private readonly authDialog = new AuthDialog();
+
+  private readonly header = new Header((mode: AuthMode) => {
+    this.authDialog.open(mode);
+  });
 
   public render(): HTMLElement {
     return createElement('div', {
@@ -28,6 +33,7 @@ export class HomePage implements Page {
         }),
         new Footer().render(),
         this.header.renderMenu(),
+        this.authDialog.render(),
       ],
     });
   }

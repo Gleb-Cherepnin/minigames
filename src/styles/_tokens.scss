@@ -99,6 +99,8 @@ $shadow-card:
   0 2px 4px rgba(0, 0, 0, 0.04),
   0 14px 15px rgba(0, 0, 0, 0.08);
 $shadow-button: 0 10px 10px rgba(0, 0, 0, 0.1);
+$shadow-dialog: 8px 8px 0 $color-black;
+$shadow-cta: 0 4px 0 $color-on-primary;
 
 $layout-max-width: 1920px;
 $layout-min-width: 375px;
