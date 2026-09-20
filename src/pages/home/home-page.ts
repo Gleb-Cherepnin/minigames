@@ -1,4 +1,5 @@
 import type { Page } from '@/app/router';
+import { Carousel } from '@/components/carousel/carousel';
 import { Header } from '@/components/header/header';
 import { Hero } from '@/components/hero/hero';
 import { createElement } from '@/utils/dom';
@@ -15,7 +16,7 @@ export class HomePage implements Page {
         this.header.render(),
         createElement('main', {
           className: 'home-page__main',
-          children: [new Hero().render()],
+          children: [new Hero().render(), new Carousel().render()],
         }),
         this.header.renderMenu(),
       ],
